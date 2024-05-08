@@ -9,7 +9,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('contacts', function (Blueprint $table) {
-            $table->id(); // This will create an auto-incrementing primary key column named 'id'
+            $table->id();
             $table->string('name');
             $table->integer('number');
         });
