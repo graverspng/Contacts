@@ -7,7 +7,7 @@
     <title>Laravel</title>
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
+
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
     <!-- Styles -->
@@ -25,9 +25,12 @@
         }
 
         .container {
+            width: 80%; /* Adjust the width as needed */
+            max-width: 800px; /* Set a max-width for larger screens */
+            margin: auto; /* Center the container */
+            padding: 40px; /* Increase padding for more space inside */
             text-align: center;
             background-color: #2c3e50; /* Slightly lighter blue for the container */
-            padding: 20px;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Adding some shadow for depth */
         }
@@ -46,14 +49,20 @@
             background-color: #3498db; /* Background color on hover */
             color: #1b2b34; /* Text color on hover */
         }
+
+        h1 {
+            text-align: center; /* Center the text horizontally */
+            margin-top: 20px; /* Add some space at the top */
+        }
     </style>
 </head>
 <body class="font-sans antialiased dark:bg-black dark:text-white/50">
     <div class="container">
+    <h1 style="margin-bottom:50px;">Welcome to GraveraContacts</h1>
         @if (Route::has('login'))
             <nav>
                 @auth
-                    <a href="{{ url('/dashboard') }}">Dashboard</a>
+                    <a href="{{ url('/dashboard') }}">Contacts</a>
                 @else
                     <a href="{{ route('login') }}">Log in</a>
                     @if (Route::has('register'))
@@ -62,6 +71,7 @@
                 @endauth
             </nav>
         @endif
+        
     </div>
 </body>
 </html>

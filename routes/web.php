@@ -12,20 +12,22 @@ Route::get('/contacts', function () {
     return view('contacts');
 });
 
-Route::get('/create-contacts', function () {
-    return view('create-contacts');
-});
-
-Route::get('/existing-contacts', function () {
-    return view('existing-contacts');
-});
 
 Route::get('/dashboard', function () {
     return redirect('/contacts');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/contacts/create', [ContactController::class, 'create'])->name('contacts.create');
+Route::delete('/contacts/{id}', [ContactController::class, 'destroy'])->name('contacts.destroy');
+Route::get('/contacts/{id}/edit', [ContactController::class, 'edit'])->name('contacts.edit');
+Route::put('/contacts/{id}', [ContactController::class, 'update'])->name('contacts.update');
+
+
+
+
 
 Route::middleware('auth')->group(function () {
+    Route::get('/contacts', [ContactController::class, 'index'])->name('contacts.index');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

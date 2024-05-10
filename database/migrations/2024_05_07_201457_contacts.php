@@ -12,12 +12,17 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->integer('number');
+            $table->timestamps(); 
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('contacts');
+        Schema::table('contacts', function (Blueprint $table) {
+            $table->string('name')->change(); 
+            $table->integer('number')->change(); 
+        });
     }
 };
+
 
